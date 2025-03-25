@@ -4,7 +4,26 @@ document.body.appendChild(getSumBtn);
 
 const getSum = () => {
 //Add your code here
-  
+const priceelem=document.querySelectorAll(".price")	;
+	let totalprice=0;
+
+	priceelem.forEach(element => {
+		const price=parseFloat(element.textContent);
+		if(!isNaN(price))
+		{
+			totalprice += price;
+		}
+	});
+
+	const table=document.querySelector("table");
+
+	const newrow=document.createElement("tr");
+	const totcell=document.createElement("td");
+
+	totcell.textContent=`Get Total Price:${totalprice.toFixed(2)}`;
+	totcell.colSpan=table.rows[0].cells.length;
+	newrow.appendChild(totcell);
+  table.appendChild(newrow);
 };
 
 getSumBtn.addEventListener("click", getSum);
